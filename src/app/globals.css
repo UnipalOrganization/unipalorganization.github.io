@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   DESIGN TOKENS  —  edit these to re-skin the whole site
+   ----------------------------------------------------------------------------
+   Every color / radius / font below is referenced by the components through
+   Tailwind utilities (bg-primary, text-muted-foreground, rounded-button, ...).
+   Change a value here and it updates everywhere. Colors are plain hex so a
+   copywriter or designer can swap them without touching component code.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Surface ------------------------------------------------------------ */
+  --background: #fffcee; /* page background — a warm cream, not plain white */
+  --foreground: #171c1a; /* default text color                              */
+
+  /* --- Brand: primary + "soft" buttons ----------------------------------- */
+  /* Primary button: deep green surface with pale-green text.                */
+  --primary: #005427;
+  --primary-foreground: #ddffa9;
+  /* Soft button: the same pair inverted — pale-green surface, green text.   */
+  --soft: #E9EBDC;
+  --soft-foreground: #002B00;
+
+  /* --- Neutrals (derived from the cream/green palette) ------------------- */
+  --muted: #f1ecd6; /* subtle raised/quiet background                        */
+  --muted-foreground: #6c6a58; /* secondary / supporting text               */
+  --border: #E9EBDC; /* hairline borders                                     */
+  --card: #E9EBDC; /* card surface — white pops cleanly off the cream page   */
+  --card-foreground: #1c1b17;
+  --accent: #f1ecd6; /* hover background for ghost/outline buttons           */
+  --accent-foreground: #1c1b17;
+  --secondary: #e9ebdc; /* quiet chip/badge surface                          */
+  --secondary-foreground: #1c1b17;
+  --ring: #005427; /* focus ring                                            */
+
+  /* --- Radii ------------------------------------------------------------- */
+  --btn-radius: 2rem; /* corner radius of buttons  → rounded-button      */
+  --card-radius: 2rem; /* corner radius of cards      → rounded-card         */
+
+  /* --- Fonts ------------------------------------------------------------- */
+  /* The three *-src variables are provided by next/font in layout.tsx.      */
+  --font-display: var(--font-instrument-serif), Georgia, serif; /* h1, h2    */
+  --font-heading: var(--font-inter-tight), system-ui, sans-serif; /* h3–h6  */
+  /* Body: Apple devices use the native system font (SF) via the Apple-only   */
+  /* keywords first; those are unknown on Windows/Android/Linux, so it falls  */
+  /* through to self-hosted Switzer. `system-ui` stays LAST as a safety net   */
+  /* (it must not precede Switzer, or Windows would stop at Segoe UI).        */
+  --font-body: -apple-system, BlinkMacSystemFont, var(--font-switzer), system-ui, sans-serif; /* body text */
 }
 
+/* ----------------------------------------------------------------------------
+   Map the tokens above onto Tailwind's theme so utilities are generated:
+   bg-*, text-*, border-*, ring-*, rounded-button, rounded-card, font-*.
+   -------------------------------------------------------------------------- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-soft: var(--soft);
+  --color-soft-foreground: var(--soft-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-ring: var(--ring);
+
+  --radius-button: var(--btn-radius);
+  --radius-card: var(--card-radius);
+
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ----------------------------------------------------------------------------
+   Base element styling. Bare <h1>…<p> get the right font + size automatically,
+   so section components can render plain semantic tags and stay readable.
+   -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--border);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #002b00;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400; /* Instrument Serif ships one weight only */
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 1.5rem + 4vw, 4rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+    line-height: 1.15;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
 }
