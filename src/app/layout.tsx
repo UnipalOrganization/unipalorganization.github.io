@@ -36,9 +36,10 @@ const switzer = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Unipal — Your campus companion",
+  title: "Unipal — Your admissions champion",
   description:
-    "The all-in-one app that helps students find their people, plan their days, and get more out of university life.",
+    "An AI admissions champion, grounded in your school's own content — it answers every prospect's questions, surfaces what makes you their fit, and moves them down your funnel.",
+  icons: { icon: "/favicon.png" },
 };
 
 export default function RootLayout({

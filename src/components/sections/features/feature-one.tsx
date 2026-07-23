@@ -1,14 +1,25 @@
+import Link from "next/link";
+
 import { Section, Container } from "@/components/craft/craft";
-import type { FeatureItem } from "../types";
+import { Button } from "@/components/ui/button";
+import type { CTA, FeatureItem } from "../types";
 
 export type FeatureOneProps = {
-  title: string;
+  title: React.ReactNode;
   subtitle?: string;
   items: FeatureItem[];
+  primaryCta?: CTA;
+  secondaryCta?: CTA;
 };
 
-/** Heading + a 3-up grid of icon/title/description features. */
-export const FeatureOne = ({ title, subtitle, items }: FeatureOneProps) => (
+/** Heading + a 3-up grid of icon/title/description features, with optional actions. */
+export const FeatureOne = ({
+  title,
+  subtitle,
+  items,
+  primaryCta,
+  secondaryCta,
+}: FeatureOneProps) => (
   <Section className="">
     <Container>
       <div className="flex flex-col gap-6">
@@ -26,6 +37,21 @@ export const FeatureOne = ({ title, subtitle, items }: FeatureOneProps) => (
             </div>
           ))}
         </div>
+
+        {(primaryCta || secondaryCta) && (
+          <div className="mt-6 flex items-center gap-2">
+            {primaryCta && (
+              <Button className="w-fit" asChild>
+                <Link href={primaryCta.href}>{primaryCta.label}</Link>
+              </Button>
+            )}
+            {secondaryCta && (
+              <Button className="w-fit" variant="link" asChild>
+                <Link href={secondaryCta.href}>{secondaryCta.label} &rarr;</Link>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </Container>
   </Section>

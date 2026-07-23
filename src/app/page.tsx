@@ -1,246 +1,211 @@
 import {
-  CalendarDays,
-  MapPin,
-  MessagesSquare,
-  Sparkles,
-  Users,
-  Wallet,
+  BookMarked,
+  Bot,
+  Clock,
+  SlidersHorizontal,
+  TrendingUp,
+  Zap,
 } from "lucide-react";
 
 import { Main } from "@/components/craft/craft";
-import { ScrollPath } from "@/components/scroll-path";
 import { TypeWrite } from "@/components/type-write";
 import { SquigglyHighlight } from "@/components/squiggly-highlight";
-import { svgLineFromFile } from "@/lib/svg-path";
 import {
   SiteNav,
   HeroFive,
   SchoolLogoSlider,
   FeatureOne,
   FeatureThree,
+  FeatureFour,
   FeatureSix,
-  FeatureSeven,
-  FeatureNine,
   FaqsThree,
   CtaThree,
   FooterThree,
 } from "@/components/sections";
 
 /**
- * Example landing page assembled from the ported brijr catalog.
+ * Unipal landing page — US / Liberal Arts college market.
  *
- * Each section is one of the brijr variants, now driven entirely by props —
- * this is the file a copywriter edits. Swap `HeroFive` for `HeroOne`/`HeroSix`,
- * `PricingThree` for `PricingOne`, etc. to try other layouts; the content props
- * are consistent across variants of the same type. Design tokens live in
- * src/app/globals.css.
+ * Copy is derived from the internal sales guide (signals, not verbatim). Media
+ * points at the neutral /placeholder.jpg and all button hrefs are left empty on
+ * purpose — real assets and links are wired in later.
  */
 export default function Home() {
-  // Read at build time (static export) and hand the line data to <ScrollPath>.
-  const curve = svgLineFromFile("src/assets/curve.svg");
-  const curve2 = svgLineFromFile("src/assets/curve2.svg");
-
   return (
     <>
       <SiteNav
         brand="Unipal"
         links={[
           { label: "Features", href: "#features" },
-          { label: "Pricing", href: "#pricing" },
+          { label: "Why Unipal", href: "#why" },
           { label: "FAQ", href: "#faq" },
         ]}
-        cta={{ label: "Get the app", href: "#download" }}
+        cta={{ label: "See it live", href: "/get-started" }}
       />
 
       <Main>
-        
         <HeroFive
           announcement={{
-            label: "Now live at 40+ campuses",
-            href: "#download",
+            label: "Live now at Colorado College",
+            href: "/get-started",
           }}
           title={
             <>
               <SquigglyHighlight color="var(--primary-foreground)">chat</SquigglyHighlight>.
               <TypeWrite
-                words={[
-                  "amherst",
-                  "coloradocollege",
-                  "lafayette",
-                ]}
+                words={["amherst", "coloradocollege", "lafayette"]}
                 cursorClassName="text-primary font-normal"
               />.edu
             </>
           }
-          subtitle="Unipal helps you find your people, stay on top of classes, and actually enjoy campus — without juggling ten different apps."
-          image={{ src: "/cc-cc-w-action.mp4", alt: "Unipal app preview" }}
+          subtitle="An AI admissions champion, grounded in your school's own content. It answers every prospect's questions, surfaces what makes you their fit, and calls them to their next step down your funnel."
+          image={{ src: "/hero2.mp4", alt: "Unipal admissions assistant" }}
         />
 
         <SchoolLogoSlider />
 
-        <div id="features">
-          <ScrollPath {...curve} />
-          <FeatureOne
-            title="Everything you need to feel at home on campus."
-            subtitle="Built with students, for students."
-            items={[
-              {
-                icon: Users,
-                title: "Find your people",
-                description:
-                  "Match with students who share your course, clubs, and interests — from day one of orientation.",
-              },
-              {
-                icon: CalendarDays,
-                title: "One smart timetable",
-                description:
-                  "Classes, deadlines, and society events sync into a single schedule that reminds you before you forget.",
-              },
-              {
-                icon: MapPin,
-                title: "Never get lost",
-                description:
-                  "Indoor campus maps guide you room-to-room, so you make it to that 9am lecture on time.",
-              },
-            ]}
-          />
-        </div>
-
-        <div className="">
-          <ScrollPath {...curve2} reverse></ScrollPath>
-          <FeatureThree
-            title="Your timetable, finally sorted."
-            body="Pull in classes, add society events, and get a nudge before anything starts. No more screenshots of a PDF timetable buried in your camera roll."
-            primaryCta={{ label: "Get started", href: "#download" }}
-            secondaryCta={{ label: "Learn more", href: "#" }}
-            image={{ src: "/cc-cc-w-action.mp4", alt: "Unipal timetable in action" }}
-          />
-        </div>
-
-        <FeatureSix
-          title="More than a timetable."
-          subtitle="The little things that make campus life click."
+        <FeatureOne
+          title={
+            <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
+              <img
+                src="/Colorado_College_seal.svg"
+                alt="Colorado College seal"
+                className="inline-block h-10 w-10 md:h-12 md:w-12"
+              />
+              <span>
+                <SquigglyHighlight color="var(--primary-foreground)">
+                  Colorado College
+                </SquigglyHighlight>{" "}
+                put Unipal to work.
+              </span>
+            </span>
+          }
+          subtitle="&ldquo;Unipal answers the questions prospects were never going to email us, and shows us what they're actually asking about. It's like adding a recruiter who never clocks out.&rdquo; — Brett Woodard, Colorado College"
           items={[
             {
-              icon: Wallet,
-              title: "Student deals",
+              icon: TrendingUp,
+              title: "2–4×",
               description:
-                "Local discounts and campus perks, surfaced automatically based on where you are.",
-              cta: "Browse perks",
-              href: "#",
+                "Campus visitors yield far higher than students who never come. Unipal turns questions into booked visits, sign-ups, and other conversion actions.",
             },
             {
-              icon: MessagesSquare,
-              title: "Group chats that stick",
+              icon: Clock,
+              title: "24/7",
               description:
-                "Course and society chats stay organized long after the group chat goes quiet.",
-              cta: "See how",
-              href: "#",
+                "Prospective students get grounded, sourced answers the moment they're curious — nights, weekends, long after the office closes.",
+            },
+            {
+              icon: Zap,
+              title: "5 minutes",
+              description:
+                "From a new subdomain record to a live assistant. No engineering project, no code — the rest runs on our side.",
             },
           ]}
-          highlight={{
-            icon: Sparkles,
-            title: "Made for you",
-            description:
-              "The more you use Unipal, the better it gets at suggesting events and people you'll actually like.",
-            cta: "Learn more",
-            href: "#",
+          primaryCta={{
+            label: "See the live demo",
+            href: "https://careerchat.coloradocollege.edu/demo",
           }}
         />
 
-        <FeatureSeven
-          image={{
-            src: "/school_assets/wellesley_college_sticker.webp",
-            alt: "Wellesley College sticker",
-          }}
-          title="Made for your campus, mascot and all."
-          body="Unipal comes with your school's community built in — societies, events, and the people who make it yours. Right down to the in-jokes on the stickers."
-          primaryCta={{ label: "Find your campus", href: "#download" }}
-          secondaryCta={{ label: "Request your school", href: "#" }}
-        />
+        <div id="features">
+          <FeatureThree
+            title="Not a FAQ bot. An admissions champion."
+            body="Unipal speaks in your office's voice, meets each prospect on their major or research interest, and surfaces the professor, program, or opportunity that makes your school their fit. That depth of connection is what a prospect remembers — and what puts you a step ahead of the schools next door."
+            primaryCta={{ label: "See it in action", href: "/get-started" }}
+            secondaryCta={{ label: "How it works", href: "/get-started" }}
+            image={{ src: "/champion.png", alt: "Unipal in conversation with a prospective student" }}
+          />
 
-        <FeatureNine
-          fit="contain"
-          title="Loved on campuses across the country."
-          body="From Amherst to Wellesley, students are making Unipal their own — one society, timetable, and unicorn sticker at a time."
-          images={[
-            {
-              src: "/school_assets/amherst_college_sticker.webp",
-              alt: "Amherst College sticker",
-            },
-            {
-              src: "/school_assets/clark_university_sticker.webp",
-              alt: "Clark University sticker",
-            },
-            {
-              src: "/school_assets/colorado_college_sticker.webp",
-              alt: "Colorado College sticker",
-            },
-            {
-              src: "/school_assets/hws_college_sticker.webp",
-              alt: "Hobart and William Smith Colleges sticker",
-            },
-            {
-              src: "/school_assets/lafayette_college_sticker.webp",
-              alt: "Lafayette College sticker",
-            },
-            {
-              src: "/school_assets/skidmore_college_sticker.webp",
-              alt: "Skidmore College sticker",
-            },
-            {
-              src: "/school_assets/wellesley_college_sticker.webp",
-              alt: "Wellesley College sticker",
-            },
-          ]}
-        />
+          <FeatureFour
+            title="Every answer ends in a next step."
+            body="The moment a prospect is interested, Unipal calls them to act — book a campus visit, save an info session, join a mailing list, or send a counselor a pre-drafted note. You name the action cards; Unipal surfaces the events and touchpoints your team worked hard to build. And since the campus visit is the highest-converting moment in the funnel, that nudge is the one that matters most."
+            primaryCta={{ label: "Explore action cards", href: "/get-started" }}
+            secondaryCta={{ label: "See the funnel", href: "/get-started" }}
+            image={{ src: "/action2.png", alt: "Unipal action cards prompting a prospect to convert" }}
+          />
+
+          <FeatureThree
+            title="See the questions behind the applications."
+            body="Every conversation is a signal. Unipal shows you what prospects ask — and what they hesitate to ask — where they came from, and which action cards they click. You get engagement depth, not just applicant volume, so you can tell genuine interest from noise. It all flows into the CRM you already run."
+            primaryCta={{ label: "See the dashboard", href: "/get-started" }}
+            secondaryCta={{ label: "Read the analytics", href: "/get-started" }}
+            image={{ src: "/placeholder.jpg", alt: "Unipal analytics dashboard of prospect conversations" }}
+          />
+        </div>
+
+        <div id="why">
+          <FeatureSix
+            title="Why not just ChatGPT?"
+            subtitle="Because a general chatbot doesn't work for your admissions office — it works for everyone's."
+            items={[
+              {
+                icon: BookMarked,
+                title: "Grounded in your school, cited every time",
+                description:
+                  "Trained on your official site and the documents you add, Unipal ties every answer back to its source. You decide which pages are in, and drop in offline material the public site never covered.",
+              },
+              {
+                icon: SlidersHorizontal,
+                title: "You hold the controls",
+                description:
+                  "Shape how it speaks and what it will — and won't — say, in plain language from your dashboard. Prep it for the tough comparison questions instead of hoping a generic model gets them right.",
+              },
+            ]}
+            highlight={{
+              icon: Bot,
+              title: "The smartest model on earth still won't recruit for you",
+              description:
+                "ChatGPT could top every benchmark tomorrow and it still wouldn't move a single prospect toward your school. Unipal lives on your site, tuned by you, sourced from your content, and fully visible to you — every question asked, every answer given. None of that is something a general chatbot can do.",
+            }}
+          />
+        </div>
 
         <div id="faq">
           <FaqsThree
-            title="Frequently asked questions"
-            subtitle="Still curious? Reach out and the team will get back to you."
+            title="Questions admissions teams ask us"
+            subtitle="Still curious? Reach out and we'll walk you through it."
             items={[
               {
-                question: "Is Unipal really free?",
+                question: "Can we add our own offline content?",
                 answer:
-                  "Yes. The Free plan is free forever and covers the essentials most students need. Plus and Societies add extras for those who want them.",
-                media: { src: "/placeholder.jpg", alt: "Unipal app preview" },
+                  "Yes. Beyond the pages on your official domain, you can upload documents straight to your dashboard — background briefs, comparison notes, anything the public site doesn't cover — and Unipal will use them.",
+                link: "",
+                media: { src: "/placeholder.jpg", alt: "Uploading documents to the Unipal dashboard" },
               },
               {
-                question: "Which universities are supported?",
+                question: "What if it surfaces something we don't want — or makes something up?",
                 answer:
-                  "We're live at 40+ campuses across the UK and adding more every month. If yours isn't listed yet, you can request it in the app.",
-                link: "#",
-                media: {
-                  src: "/cc-cc-w-action.mp4",
-                  alt: "Unipal timetable in action",
-                },
+                  "You control what goes into the knowledge base and how the assistant behaves, in plain words, from the dashboard. Every answer is grounded in your sources and cited, so it isn't guessing — and our default setup has been tuned over months to stay on-message.",
+                media: { src: "/placeholder.jpg", alt: "Unipal source citations and controls" },
               },
               {
-                question: "How does student matching work?",
+                question: "How long does it take to go live?",
                 answer:
-                  "You tell us your course, interests, and clubs. Unipal suggests people with overlap — you're always in control of who you connect with.",
-                media: { src: "/placeholder.jpg", alt: "Unipal app preview" },
+                  "About five minutes. You create one new subdomain record — chat.yourschool.edu — and you're live. Zero code, no rebuild. Everything else runs on our infrastructure.",
+                media: { src: "/placeholder.jpg", alt: "Setting up the chat subdomain" },
               },
               {
-                question: "Is my data private?",
+                question: "Will this turn into an IT project?",
                 answer:
-                  "Your profile is only visible to your campus community, and you choose what to share. We never sell your data.",
-                media: {
-                  src: "/cc-cc-w-action.mp4",
-                  alt: "Unipal timetable in action",
-                },
+                  "No. There's nothing to integrate beyond that single subdomain record — no plugins, no rebuild, no ongoing maintenance burden on your team. The system lives on our side.",
+                media: { src: "/placeholder.jpg", alt: "Unipal hosted infrastructure" },
+              },
+              {
+                question: "How does this work with FERPA?",
+                answer:
+                  "Unipal is anonymous by design. It requires no sign-up and collects no personally identifiable information — which is exactly right for prospective students exploring your pages.",
+                media: { src: "/placeholder.jpg", alt: "Anonymous, privacy-first conversations" },
               },
             ]}
           />
         </div>
 
-        <div id="download">
+        <div id="contact">
           <CtaThree
-            title="Ready to make the most of uni?"
-            subtitle="Join thousands of students already using Unipal to find their people and stay organized."
-            primaryCta={{ label: "Download the app", href: "#" }}
-            secondaryCta={{ label: "Talk to us", href: "#contact" }}
+            title="Let's put your admissions champion live."
+            subtitle="The next step isn't a yes-or-no on a pilot — it's a short walkthrough and a plan to stand up your assistant together, milestone by milestone. Tell us when works and we'll take it from there."
+            primaryCta={{ label: "Book a walkthrough", href: "/get-started" }}
+            secondaryCta={{ label: "Talk to the team", href: "/get-started" }}
           />
         </div>
       </Main>
@@ -248,22 +213,21 @@ export default function Home() {
       <FooterThree
         brand="Unipal"
         logo={{ src: "/logo.svg", alt: "Unipal" }}
-        blurb="The all-in-one app for a better university life."
+        blurb="An AI admissions champion that lives on your site — grounded in your content, tuned by your office."
         columns={[
           {
             heading: "Product",
             links: [
               { label: "Features", href: "#features" },
-              { label: "Pricing", href: "#pricing" },
-              { label: "Download", href: "#download" },
+              { label: "Why Unipal", href: "#why" },
+              { label: "FAQ", href: "#faq" },
             ],
           },
           {
             heading: "Company",
             links: [
-              { label: "About", href: "#" },
-              { label: "Careers", href: "#" },
-              { label: "Contact", href: "#contact" },
+              { label: "About", href: "/get-started" },
+              { label: "Contact", href: "/get-started" },
             ],
           },
         ]}
