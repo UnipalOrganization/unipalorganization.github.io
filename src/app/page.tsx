@@ -129,7 +129,7 @@ export default function Home() {
             body="Every conversation is a signal. Unipal shows you what prospects ask — and what they hesitate to ask — where they came from, and which action cards they click. You get engagement depth, not just applicant volume, so you can tell genuine interest from noise. It all flows into the CRM you already run."
             primaryCta={{ label: "See the dashboard", href: "/get-started" }}
             secondaryCta={{ label: "Read the analytics", href: "/get-started" }}
-            image={{ src: "/placeholder.jpg", alt: "Unipal analytics dashboard of prospect conversations" }}
+            image={{ src: "/analytics.png", alt: "Unipal analytics dashboard of prospect conversations" }}
           />
         </div>
 
